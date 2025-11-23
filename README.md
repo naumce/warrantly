@@ -1,36 +1,174 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Warranty Tracker - Landing Page
 
-## Getting Started
+Modern, responsive landing page for Warranty Tracker mobile app built with Next.js 14, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
 
+- ✅ **Hero Section** - Eye-catching hero with gradient backgrounds and app preview
+- ✅ **Features Section** - Showcase AI-powered features with icons
+- ✅ **Pricing Section** - Lifetime pricing tiers with highlighted plan
+- ✅ **FAQ Section** - Expandable frequently asked questions
+- ✅ **Footer** - Links, social media, and legal pages
+- ✅ **Fully Responsive** - Mobile-first design
+- ✅ **Animated** - Smooth animations and transitions
+- ✅ **SEO Optimized** - Meta tags and semantic HTML
+- ✅ **Fast Performance** - Next.js 14 App Router
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Deployment**: Vercel (recommended)
+
+## 📦 Getting Started
+
+### Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run Development Server
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Build for Production
+```bash
+npm run build
+```
 
-## Learn More
+### Start Production Server
+```bash
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Customization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Colors
+The landing page uses a purple/pink gradient theme matching the mobile app. Edit in `tailwind.config.ts`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```typescript
+// Main gradient colors
+from-purple-600 to-pink-600   // Primary gradient
+from-purple-400 to-pink-400   // Text gradient
+```
 
-## Deploy on Vercel
+### Content
+Edit the components in `/components`:
+- `Hero.tsx` - Main hero section
+- `Features.tsx` - Features grid
+- `Pricing.tsx` - Pricing tiers
+- `FAQ.tsx` - FAQ items
+- `Footer.tsx` - Footer links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### App Store Links
+Update download buttons in `Hero.tsx`:
+```typescript
+// Line ~46
+<a href="YOUR_APP_STORE_LINK">📲 Download on App Store</a>
+<a href="YOUR_PLAY_STORE_LINK">🤖 Get it on Google Play</a>
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Deployment to Vercel
+
+### Quick Deploy
+```bash
+npm install -g vercel
+vercel
+```
+
+### Connect Custom Domain
+1. Go to Vercel dashboard → Project Settings → Domains
+2. Add `warrantytracker.app`
+3. Update DNS settings to point to Vercel
+
+**DNS Configuration:**
+```
+Type: A
+Name: @
+Value: 76.76.21.21
+
+Type: CNAME
+Name: www
+Value: cname.vercel-dns.com
+```
+
+### Environment Variables (Optional)
+Add in Vercel dashboard if you need analytics:
+- `NEXT_PUBLIC_GA_ID` - Google Analytics
+- `NEXT_PUBLIC_POSTHOG_KEY` - PostHog analytics
+
+## 📱 Adding App Screenshots
+
+Replace the placeholder in `Hero.tsx` (line ~100) with real screenshots:
+
+```tsx
+<img 
+  src="/screenshots/app-preview.png" 
+  alt="Warranty Tracker App"
+  className="rounded-2xl shadow-2xl"
+/>
+```
+
+Add screenshots to `/public/screenshots/`
+
+## 🎯 SEO Optimization
+
+Metadata is configured in `app/layout.tsx`. Update:
+- Title
+- Description
+- Keywords
+- Open Graph images
+- Twitter cards
+
+## 📊 Analytics (Optional)
+
+Add Google Analytics or PostHog:
+
+```bash
+npm install @next/third-parties
+```
+
+In `app/layout.tsx`:
+```typescript
+import { GoogleAnalytics } from '@next/third-parties/google'
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+      </body>
+    </html>
+  )
+}
+```
+
+## 🔗 Useful Links
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Vercel Deployment](https://vercel.com/docs)
+- [Lucide Icons](https://lucide.dev)
+
+## 📝 TODO
+
+- [ ] Add real app screenshots
+- [ ] Connect to App Store & Play Store links
+- [ ] Add Google Analytics
+- [ ] Create blog section (optional)
+- [ ] Add testimonials (when available)
+- [ ] Connect to actual API for user count
+
+## 📧 Support
+
+For questions or issues, contact: support@warrantytracker.app
+
+---
+
+**Built with ❤️ for Warranty Tracker**
