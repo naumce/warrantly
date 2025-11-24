@@ -94,7 +94,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
         >
           <motion.a
-            href="https://apps.apple.com/app/warranty-tracker"
+            href="https://apps.apple.com/app/warrantly"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             className="group inline-flex items-center px-8 py-4 bg-white text-purple-600 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all"
@@ -104,7 +104,7 @@ export default function Hero() {
           </motion.a>
 
           <motion.a
-            href="https://play.google.com/store/apps/details?id=com.warrantytracker"
+            href="https://play.google.com/store/apps/details?id=com.warrantly"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             className="group inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-2xl font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-all"
