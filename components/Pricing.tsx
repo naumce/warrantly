@@ -12,40 +12,42 @@ const tiers = [
     features: [
       '2 warranties',
       '1 claim',
-      '5 AI credits',
+      '2 AI credits',
       'Basic features',
       'Email support',
     ],
     cta: 'Download Free',
     popular: false,
-    gradient: 'from-gray-500 to-gray-600'
+    gradient: 'from-gray-500 to-gray-600',
+    link: null // Free tier - download app
   },
   {
     name: 'Starter',
     price: '$4.99',
     period: 'one-time',
-    description: 'For casual users',
+    description: 'For essential tracking',
     features: [
-      '10 warranties',
-      '5 claims',
-      '20 AI credits',
+      '5 warranties',
+      '3 claims',
+      '5 AI credits',
       'All AI features',
       'Priority support',
       'Buy more credits',
     ],
     cta: 'Buy Lifetime Access',
     popular: false,
-    gradient: 'from-blue-500 to-cyan-500'
+    gradient: 'from-blue-500 to-cyan-500',
+    link: 'https://warrantly.lemonsqueezy.com/buy/cc07666e-c27c-4173-9c97-22c2b4ab8a9a'
   },
   {
-    name: 'Power User',
-    price: '$14.99',
+    name: 'Pro',
+    price: '$9.99',
     period: 'one-time',
     description: 'Most popular choice',
     features: [
-      '25 warranties',
-      '25 claims',
-      '50 AI credits',
+      '15 warranties',
+      '10 claims',
+      '20 AI credits',
       'All AI features',
       'Unlimited receipts',
       'Service locator',
@@ -53,36 +55,52 @@ const tiers = [
       'Buy more credits',
     ],
     cta: 'Buy Lifetime Access',
-    popular: true, // ✅ Changed to true for Power User
+    popular: true,
     gradient: 'from-purple-600 to-pink-600',
-    badge: 'MOST POPULAR'
+    badge: 'MOST POPULAR',
+    link: 'https://warrantly.lemonsqueezy.com/buy/b4afe4ae-d4e0-453b-8c09-dd16ae648620'
   },
   {
-    name: 'Business Pro',
-    price: '$39.99',
+    name: 'Ultimate',
+    price: '$19.99',
     period: 'one-time',
-    description: 'For businesses & teams',
+    description: 'For power users',
     features: [
-      'Unlimited warranties',
-      'Unlimited claims',
-      '200 AI credits',
+      '50 warranties',
+      '30 claims',
+      '50 AI credits',
       'All premium features',
       'Bulk import',
-      'Team management',
-      'API access',
-      'Dedicated support',
+      'Service locator',
+      'Priority support',
+      'Buy more credits',
     ],
     cta: 'Buy Lifetime Access',
-    popular: false, // ✅ Changed to false (removed from Business Pro)
+    popular: false,
     gradient: 'from-indigo-600 to-purple-600',
-    badge: 'BEST VALUE'
+    badge: 'BEST VALUE',
+    link: 'https://warrantly.lemonsqueezy.com/buy/df8e06a8-c643-4cff-b05a-558d88fe6054'
   },
 ]
 
 const creditPackages = [
-  { credits: 10, price: '$4.99' },
-  { credits: 50, price: '$19.99' },
-  { credits: 150, price: '$49.99' },
+  { 
+    credits: 10, 
+    price: '$4.99',
+    link: 'https://warrantly.lemonsqueezy.com/buy/e1b4632c-6ce1-44a0-82ec-139f06589c95'
+  },
+  { 
+    credits: 50, 
+    price: '$19.99',
+    link: 'https://warrantly.lemonsqueezy.com/buy/353e919b-8141-4ef7-8858-f1da6a4f0b81',
+    badge: 'POPULAR'
+  },
+  { 
+    credits: 150, 
+    price: '$39.99',
+    link: 'https://warrantly.lemonsqueezy.com/buy/f29cf6f6-4229-4200-be60-3b09589c4c09',
+    badge: 'BEST VALUE'
+  },
 ]
 
 const container = {
@@ -233,17 +251,20 @@ export default function Pricing() {
                 </ul>
 
                 {/* CTA Button */}
-                <motion.button
+                <motion.a
+                  href={tier.link || '#'}
+                  target={tier.link ? '_blank' : undefined}
+                  rel={tier.link ? 'noopener noreferrer' : undefined}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`w-full py-4 rounded-2xl font-bold text-lg transition-all ${
+                  className={`block w-full py-4 rounded-2xl font-bold text-lg transition-all text-center ${
                     tier.popular
                       ? `bg-gradient-to-r ${tier.gradient} text-white shadow-lg hover:shadow-xl`
                       : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                   }`}
                 >
                   {tier.cta}
-                </motion.button>
+                </motion.a>
               </div>
             </motion.div>
           ))}
@@ -271,18 +292,26 @@ export default function Pricing() {
 
           <div className="flex flex-wrap justify-center gap-4">
             {creditPackages.map((pkg, index) => (
-              <motion.div
+              <motion.a
                 key={index}
+                href={pkg.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, rotate: 2 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-purple-200 hover:border-purple-400 transition-colors cursor-pointer"
+                className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-purple-200 hover:border-purple-400 transition-colors cursor-pointer relative"
               >
+                {pkg.badge && (
+                  <span className="absolute -top-3 -right-2 px-2 py-1 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-lg">
+                    {pkg.badge}
+                  </span>
+                )}
                 <div className="text-center">
                   <div className="text-3xl font-bold text-purple-600 mb-1">{pkg.credits}</div>
                   <div className="text-sm text-gray-600 mb-2">credits</div>
                   <div className="text-xl font-bold text-gray-900">{pkg.price}</div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
 
