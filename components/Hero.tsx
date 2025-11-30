@@ -2,6 +2,7 @@
 
 import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function Hero() {
   return (
@@ -166,19 +167,15 @@ export default function Hero() {
           >
             {/* Phone Frame */}
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-[3rem] p-4 shadow-2xl border-8 border-gray-700">
-              {/* Screen Content Placeholder */}
-              <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-[2.5rem] aspect-[9/19] flex flex-col items-center justify-center">
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="text-6xl mb-4"
-                >
-                  📦
-                </motion.div>
-                <p className="text-gray-600 font-semibold text-xl">App Screenshot Preview</p>
-                <p className="text-gray-500 text-sm mt-2 px-8 text-center">
-                  Add your app screenshots here
-                </p>
+              {/* Screen Content - App Screenshot */}
+              <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-[2.5rem] aspect-[9/19] overflow-hidden relative">
+                <Image
+                  src="/screenshot.png"
+                  alt="Warrantly App Dashboard Screenshot"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
 
